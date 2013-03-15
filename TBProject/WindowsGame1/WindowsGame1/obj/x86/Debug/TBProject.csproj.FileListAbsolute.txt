@@ -10,3 +10,15 @@ C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x
 C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Levels\Test.txt
 C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\Grass_Block.fbx
 C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass.jpg
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\Grass_Block.xnb
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass.xnb
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass_0.xnb
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Levels\Test.txt
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\Grass_Block.fbx
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass.jpg
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\TBProject.exe
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\TBProject.pdb
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\TBProject.csprojResolveAssemblyReference.cache
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\TBProject.exe
+C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\TBProject.pdb
