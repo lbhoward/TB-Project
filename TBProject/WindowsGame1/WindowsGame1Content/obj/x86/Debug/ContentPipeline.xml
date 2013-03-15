@@ -47,6 +47,24 @@
       <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass_0.xnb</Output>
       <Time>2013-03-15T19:20:46.3542676+00:00</Time>
     </Item>
+    <Item>
+      <Source>Models\Terrain\grassHighlighted.jpg</Source>
+      <Name>Models\Terrain\grassHighlighted</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grassHighlighted.xnb</Output>
+      <Time>2013-03-15T20:21:35.6629961+00:00</Time>
+    </Item>
+    <Item>
+      <Source>debug.spritefont</Source>
+      <Name>debug</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\debug.xnb</Output>
+      <Time>2013-03-15T20:38:01.521384+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

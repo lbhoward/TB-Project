@@ -18,6 +18,7 @@ namespace TBProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D highlighted;
 
         Camera camera;
 
@@ -46,7 +47,7 @@ namespace TBProject
                 (float)graphics.GraphicsDevice.Viewport.Width / graphics.GraphicsDevice.Viewport.Height);
 
             //Levels
-            testMap = new Terrain.TerrainMap("Content/Levels/Test.txt", Content);
+            testMap = new Terrain.TerrainMap("Content/Levels/1.txt", Content);
 
             base.Initialize();
         }
@@ -59,7 +60,7 @@ namespace TBProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            highlighted = Content.Load<Texture2D>("Models/Terrain/grassHighlighted");
             //
         }
 
@@ -83,6 +84,7 @@ namespace TBProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            testMap.Update(gameTime);
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -115,7 +117,6 @@ namespace TBProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             //Draw Terrain
             //David King drew issue with using int i, int j ETC. 'Variables should always have context'.
             //He also incoured the use of ++pre-increment, as it more effecient than post-increment++.
@@ -126,7 +127,7 @@ namespace TBProject
                     DrawModel(testMap.TerrainBlocks(mapWidth, mapHeight).Model3D, testMap.TerrainBlocks(mapWidth, mapHeight).World);
                 }
             }
-
+            
             base.Draw(gameTime);
         }
     }

@@ -35,6 +35,20 @@ namespace TBProject.Terrain
         }
         private Model model;
 
+        // Is the block selected?
+        public bool Selected
+        {
+            get { return selected; } 
+        }
+        private bool selected;
+
+        // Is the block currently highlighted by the cursor?
+        public bool Highlighted
+        {
+            get { return highlighted; }
+        }
+        private bool highlighted;
+
         //Constructor
         public TerrainBlock(Vector3 setPos, String modelPath, ContentManager content)
         {

@@ -1,6 +1,10 @@
 Content\Models\Terrain\Grass_Block.xnb
 Content\Models\Terrain\grass.xnb
 Content\Models\Terrain\grass_0.xnb
-Content\Levels\Test.txt
+Content\Models\Terrain\grassHighlighted.xnb
+Content\debug.xnb
 Content\Models\Terrain\Grass_Block.fbx
 Content\Models\Terrain\grass.jpg
+Content\Models\Terrain\grassHighlighted.jpg
+Content\Levels\1.txt
+Content\Levels\Test.txt
