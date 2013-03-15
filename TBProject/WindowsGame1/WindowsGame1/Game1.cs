@@ -21,6 +21,9 @@ namespace TBProject
 
         Camera camera;
 
+        //Levels
+        Terrain.TerrainMap testMap;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -37,8 +40,13 @@ namespace TBProject
         {
             //Initialise the camera
             //new Camera(Position(GLOBAL),LookAt(GLOBAL),AspectRatio(W/H));
-            camera = new Camera(new Vector3(0,0,0), new Vector3(0,0,0),
+            //IMPORTANT: Y+/-: Up/Down
+            //           Z+/-: Forward/Backward
+            camera = new Camera(new Vector3(0,10,-10), Vector3.Forward,
                 (float)graphics.GraphicsDevice.Viewport.Width / graphics.GraphicsDevice.Viewport.Height);
+
+            //Levels
+            testMap = new Terrain.TerrainMap("Content/Levels/Test.txt", Content);
 
             base.Initialize();
         }
@@ -52,7 +60,7 @@ namespace TBProject
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            //
         }
 
         /// <summary>
@@ -108,7 +116,16 @@ namespace TBProject
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            //Draw Terrain
+            //David King drew issue with using int i, int j ETC. 'Variables should always have context'.
+            //He also incoured the use of ++pre-increment, as it more effecient than post-increment++.
+            for (int mapHeight = 0; mapHeight < testMap.MapSize; ++mapHeight)
+            {
+                for (int mapWidth = 0; mapWidth < testMap.MapSize; ++mapWidth)
+                {
+                    DrawModel(testMap.TerrainBlocks(mapWidth, mapHeight).Model3D, testMap.TerrainBlocks(mapWidth, mapHeight).World);
+                }
+            }
 
             base.Draw(gameTime);
         }
