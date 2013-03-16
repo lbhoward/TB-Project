@@ -18,10 +18,8 @@ namespace TBProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D highlighted;
-
         Camera camera;
-
+        Cursor cursor;
         //Levels
         Terrain.TerrainMap testMap;
 
@@ -60,8 +58,7 @@ namespace TBProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            highlighted = Content.Load<Texture2D>("Models/Terrain/grassHighlighted");
-            //
+            cursor = new Cursor(testMap);
         }
 
         /// <summary>
@@ -84,7 +81,7 @@ namespace TBProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            testMap.Update(gameTime);
+            cursor.Update(gameTime);
             // TODO: Add your update logic here
 
             base.Update(gameTime);

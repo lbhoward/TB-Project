@@ -30,36 +30,12 @@ namespace TBProject.Terrain
             get { return mapSize; }
         }
         private int mapSize = 0;
-
-        //// The currently selected block
-        //public TerrainBlock CurrentlySelected
-        //{
-        //    get { return currentlySelected; }
-        //}
-        //private TerrainBlock currentlySelected;
-
-        //// The previously selected block
-        //public TerrainBlock PreviouslySelected
-        //{
-        //    get { return previouslySelected; }
-        //}
-        //private TerrainBlock previouslySelected;
-
-        //// The block which is currently highlighed by the cursor
-        //public TerrainBlock CurrentlyHighlighted 
-        //{ 
-        //    get { return currentlySelected; } 
-        //}
-        //private TerrainBlock currentlyHighlighted;
-
-        private Vector2 currentlyHighlighted; public Vector2 CurrentlyHighlighted { get { return currentlyHighlighted; } }
         #endregion
 
         //TerrainMap Constructor
         public TerrainMap(String levelLoadName, ContentManager content)
         {
             BuildMap(levelLoadName, content);
-            currentlyHighlighted = new Vector2(0, 0);
         }
 
         //Read from TXT file and create TerrainBlock array
@@ -99,20 +75,7 @@ namespace TBProject.Terrain
 
         public void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
-                ++currentlyHighlighted.Y;
-            if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight))
-                ++currentlyHighlighted.X;
-            if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
-                --currentlyHighlighted.Y;
-            if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
-                --currentlyHighlighted.X;
-
-            currentlyHighlighted.X = MathHelper.Clamp(currentlyHighlighted.X, 0, mapSize);
-            currentlyHighlighted.Y = MathHelper.Clamp(currentlyHighlighted.Y, 0, mapSize);
-
-            Console.Write("X: " + currentlyHighlighted.X + "\t");
-            Console.WriteLine("Y: " + currentlyHighlighted.Y);
+            
         }
     }
 }

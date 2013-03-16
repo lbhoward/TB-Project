@@ -41,13 +41,7 @@ namespace TBProject.Terrain
             get { return selected; } 
         }
         private bool selected;
-
-        // Is the block currently highlighted by the cursor?
-        public bool Highlighted
-        {
-            get { return highlighted; }
-        }
-        private bool highlighted;
+        public void SetSelected(bool state) { selected = state; }
 
         //Constructor
         public TerrainBlock(Vector3 setPos, String modelPath, ContentManager content)
@@ -57,6 +51,7 @@ namespace TBProject.Terrain
             //Translate model matrix to represent this
             world = Matrix.Identity;
             world.Translation = position;
+            selected = false;
 
             //Load model
             model = content.Load<Model>(modelPath);
