@@ -1,22 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
   <Asset Type="Graphics:MeshContent">
-    <Name>Cursor</Name>
+    <Name>Terrain_001</Name>
     <Identity>
-      <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
-    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 1 -1 0.1 1</Transform>
-    <Positions>0 0.9 0 -0.995 1 0 -0.895 0.9 0 -0.895 1 0 -0.1 0.9 0 0 1 0 -0.1 1 0 -0.2 0.9 0 -0.2 1 0 0 0.8 0 -0.1 0.8 0 -0.1 0.005 0 -0.1 0.105 0 -0 0.005 0 -0 0.105 0 -0.1 0.205 0 -0 0.205 0 -0.2 0.005 0 -0.2 0.105 0 -0.995 0.105 0 -0.895 0.105 0 -0.995 0.005 0 -0.895 0.005 0 -0.795 0.105 0 -0.795 0.005 0 -0.995 0.205 0 -0.895 0.205 0 -0.995 0.9 0 -0.895 0.8 0 -0.995 0.8 0 -0.795 1 0 -0.795 0.9 0</Positions>
+    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+    <Positions>0 0 -1 0 0.3 -1 1 0.3 -1 1 0 -1 0 0 0 0 0.3 0 1 0.3 0 1 0 0</Positions>
     <Geometry>
       <Batch>
         <Material>#Resource1</Material>
-        <Indices>2 1 0 0 3 2 6 5 4 4 7 6 8 7 4 4 9 8 10 4 5 5 11 10 14 13 12 12 15 14 16 15 12 12 17 16 18 12 13 13 19 18 22 21 20 20 23 22 24 23 20 20 25 24 26 20 21 21 27 26 28 3 0 0 29 28 30 0 1 1 31 30</Indices>
+        <Indices>2 1 0 0 3 2 6 5 4 4 7 6 5 9 8 8 2 5 12 11 10 10 13 12 3 4 5 5 2 3</Indices>
         <Vertices>
-          <PositionIndices>2 3 1 27 4 0 5 6 8 7 10 9 12 11 13 14 16 15 18 17 20 19 21 22 24 23 26 25 29 28 31 30</PositionIndices>
+          <PositionIndices>1 0 4 5 6 7 3 2 0 3 0 1 2 3</PositionIndices>
           <Channels>
-            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0.9999695 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</VertexChannel>
-            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">0.249956 0.250044 0.249957 0.000287 0.0002 0.000287 0.0002 0.250044 0.250043 0.750043 0.4998 0.749957 0.499714 0.5002 0.249957 0.500286 0.0002 0.500373 0.000286 0.75013 0.250129 0.9998 0.499886 0.999714 0.749872 0.250044 0.749872 0.499801 0.999629 0.499801 0.999629 0.250044 0.999629 0.000287 0.749872 0.000287 0.500115 0.250043 0.500115 0.499801 0.750043 0.750043 0.500286 0.750043 0.500286 0.9998 0.750043 0.9998 0.9998 0.9998 0.9998 0.750043 0.750043 0.500286 0.500286 0.500286 0.0002 0.499801 0.249957 0.4998 0.499714 0.250046 0.499715 0.000288</VertexChannel>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">0.5 0.999913 0.749957 0.999913 0.749956 0.749957 0.5 0.749957 0.5 0.500001 0.749957 0.500001 0.749957 0.250043 0.5 0.250043 0.999913 0.749957 0.999913 0.500001 8.8E-05 0.74996 0.250044 0.749958 0.250043 0.500002 8.7E-05 0.500004</VertexChannel>
+          </Channels>
+        </Vertices>
+      </Batch>
+      <Batch>
+        <Material>#Resource2</Material>
+        <Indices>2 1 0 0 3 2</Indices>
+        <Vertices>
+          <PositionIndices>5 6 2 1</PositionIndices>
+          <Channels>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">0.5 0.749957 0.5 0.500001 0.250043 0.500002 0.250044 0.749958</VertexChannel>
           </Channels>
         </Vertices>
       </Batch>
@@ -24,9 +35,31 @@
   </Asset>
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
+      <Name>None__grass_jpg</Name>
+      <Identity>
+        <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.8 0.8 0.8</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.160000011 0.160000011 0.160000011</Data>
+        <Data Key="SpecularPower" Type="float">80</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External1</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+    <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>None__Cursor_Texture_png</Name>
       <Identity>
-        <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

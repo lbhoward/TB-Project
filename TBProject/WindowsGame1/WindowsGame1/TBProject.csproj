@@ -117,6 +117,8 @@
     <Compile Include="Cursor.cs" />
     <Compile Include="Terrain\TerrainBlock.cs" />
     <Compile Include="Terrain\TerrainMap.cs" />
+    <Compile Include="Units\Infantry.cs" />
+    <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
   <Asset Type="Graphics:MeshContent">
-    <Name>Cube</Name>
+    <Name>Terrain</Name>
     <Identity>
-      <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Terrain\Grass_Block.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Terrain\Terrain.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
-    <Positions>0 -1 -1 0 0 -1 1 0 -1 1 -1 -1 0 -1 0 0 0 0 1 0 0 1 -1 0</Positions>
+    <Positions>0 -1 -1 0 -0 -1 1 -0 -1 1 -1 -1 0 -1 0 0 -0 0 1 -0 0 1 -1 0</Positions>
     <Geometry>
       <Batch>
         <Material>#Resource1</Material>
-        <Indices>2 1 0 0 3 2 6 5 4 4 7 6 10 9 8 8 11 10 9 10 1 1 2 9 6 7 1 1 10 6 4 5 12 12 13 4</Indices>
+        <Indices>2 1 0 0 3 2 5 4 3 3 6 5 8 7 4 4 9 8 7 11 10 10 2 7 5 6 12 12 13 5 3 4 7 7 2 3</Indices>
         <Vertices>
-          <PositionIndices>1 0 4 5 5 6 2 1 6 7 3 2 7 4</PositionIndices>
+          <PositionIndices>1 0 4 5 6 2 1 7 3 2 0 3 0 3</PositionIndices>
           <Channels>
-            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492</VertexChannel>
-            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">8.7E-05 0.250043 0.250043 0.250043 0.250043 8.7E-05 8.7E-05 8.7E-05 0.250044 0.749957 0.5 0.749956 0.5 0.5 0.250044 0.5 0.749956 8.7E-05 0.5 8.7E-05 0.5 0.250043 0.749956 0.250043 0.500001 0.999913 0.250044 0.999913</VertexChannel>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">0.5 0.999913 0.749957 0.999913 0.749956 0.749957 0.5 0.749957 0.5 0.500001 0.250043 0.500002 0.250044 0.749958 0.749957 0.500001 0.749957 0.250043 0.5 0.250043 0.999913 0.749957 0.999913 0.500001 8.8E-05 0.74996 8.7E-05 0.500004</VertexChannel>
           </Channels>
         </Vertices>
       </Batch>
@@ -26,7 +26,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>None__grass_jpg</Name>
       <Identity>
-        <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Terrain\Grass_Block.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Terrain\Terrain.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

@@ -44,6 +44,8 @@ namespace TBProject
 
         public Camera(Vector3 POSITION, Vector3 LOOKAT, float RATIO)
         {
+            position = POSITION;
+            lookAt = LOOKAT;
             view = Matrix.CreateLookAt(POSITION, LOOKAT, Vector3.Up);
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(FOV), RATIO, 0.01f, 50.0f);
         }

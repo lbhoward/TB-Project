@@ -19,7 +19,6 @@ namespace TBProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Camera camera;
-        Cursor cursor;
         //Levels
         Terrain.TerrainMap testMap;
 
@@ -41,11 +40,11 @@ namespace TBProject
             //new Camera(Position(GLOBAL),LookAt(GLOBAL),AspectRatio(W/H));
             //IMPORTANT: Y+/-: Up/Down
             //           Z+/-: Forward/Backward
-            camera = new Camera(new Vector3(0,10,-10), Vector3.Forward,
+            camera = new Camera(new Vector3(0,10,10), Vector3.Forward,
                 (float)graphics.GraphicsDevice.Viewport.Width / graphics.GraphicsDevice.Viewport.Height);
 
             //Levels
-            testMap = new Terrain.TerrainMap("Content/Levels/1.txt", Content);
+            testMap = new Terrain.TerrainMap("Content/Levels/Campaign/One/1.txt", "Content/Levels/Campaign/One/1-Units.txt", Content);
 
             base.Initialize();
         }
@@ -58,7 +57,6 @@ namespace TBProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            cursor = new Cursor(testMap, Content);
         }
 
         /// <summary>
@@ -80,9 +78,18 @@ namespace TBProject
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+            //DEBUG CAMERA
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                camera.Position = new Vector3(camera.Position.X, camera.Position.Y, camera.Position.Z + 0.1f);
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                camera.Position = new Vector3(camera.Position.X, camera.Position.Y, camera.Position.Z - 0.1f);
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                camera.Position = new Vector3(camera.Position.X - 0.1f, camera.Position.Y, camera.Position.Z);
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                camera.Position = new Vector3(camera.Position.X + 0.1f, camera.Position.Y, camera.Position.Z);
+            camera.Update();
 
-            cursor.Update(gameTime);
-            // TODO: Add your update logic here
+            testMap.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -114,19 +121,9 @@ namespace TBProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //Draw Terrain
-            //David King drew issue with using int i, int j ETC. 'Variables should always have context'.
-            //He also incoured the use of ++pre-increment, as it more effecient than post-increment++.
-            for (int mapHeight = 0; mapHeight < testMap.MapSize; ++mapHeight)
-            {
-                for (int mapWidth = 0; mapWidth < testMap.MapSize; ++mapWidth)
-                {
-                    DrawModel(testMap.TerrainBlocks(mapWidth, mapHeight).Model3D, testMap.TerrainBlocks(mapWidth, mapHeight).World);
-                }
-            }
 
-            //Draw Cursor - This should probably be moved to the player class when implemented
-            cursor.Draw(gameTime);
+            //Call the currently loaded TerrainMaps draw function
+            testMap.Draw(camera);
             
             base.Draw(gameTime);
         }
