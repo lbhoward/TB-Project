@@ -48,15 +48,6 @@
       <Time>2013-03-15T19:20:46.3542676+00:00</Time>
     </Item>
     <Item>
-      <Source>Models\Terrain\grassHighlighted.jpg</Source>
-      <Name>Models\Terrain\grassHighlighted</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grassHighlighted.xnb</Output>
-      <Time>2013-03-15T20:21:35.6629961+00:00</Time>
-    </Item>
-    <Item>
       <Source>debug.spritefont</Source>
       <Name>debug</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -64,6 +55,52 @@
       <Options>None</Options>
       <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\debug.xnb</Output>
       <Time>2013-03-15T20:38:01.521384+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor.fbx</Source>
+      <Name>Models\Player\Cursor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor.xnb</Output>
+      <Time>2013-03-16T10:13:11.4468821+00:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\Player\Cursor_0.xml</Key>
+        <Value>2013-03-16T10:25:27.622989+00:00</Value>
+      </Dependency>
+      <Request>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor_Texture_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor_Texture.png</Source>
+      <Name>Models\Player\Cursor_Texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor_Texture.xnb</Output>
+      <Time>2013-03-16T10:14:53.2127028+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\Player\Cursor_0.xml</Output>
+      <Time>2013-03-16T10:13:11.4468821+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor_Texture.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor_Texture_0.xnb</Output>
+      <Time>2013-03-16T10:14:53.2127028+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

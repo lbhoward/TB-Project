@@ -58,7 +58,7 @@ namespace TBProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            cursor = new Cursor(testMap);
+            cursor = new Cursor(testMap, Content);
         }
 
         /// <summary>
@@ -124,6 +124,9 @@ namespace TBProject
                     DrawModel(testMap.TerrainBlocks(mapWidth, mapHeight).Model3D, testMap.TerrainBlocks(mapWidth, mapHeight).World);
                 }
             }
+
+            //Draw Cursor - This should probably be moved to the player class when implemented
+            cursor.Draw(gameTime);
             
             base.Draw(gameTime);
         }

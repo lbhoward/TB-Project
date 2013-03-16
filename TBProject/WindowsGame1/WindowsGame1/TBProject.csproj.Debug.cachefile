@@ -1,10 +1,11 @@
 Content\Models\Terrain\Grass_Block.xnb
 Content\Models\Terrain\grass.xnb
 Content\Models\Terrain\grass_0.xnb
-Content\Models\Terrain\grassHighlighted.xnb
 Content\debug.xnb
+Content\Models\Player\Cursor.xnb
+Content\Models\Player\Cursor_Texture.xnb
+Content\Models\Player\Cursor_Texture_0.xnb
 Content\Models\Terrain\Grass_Block.fbx
 Content\Models\Terrain\grass.jpg
-Content\Models\Terrain\grassHighlighted.jpg
 Content\Levels\1.txt
 Content\Levels\Test.txt
