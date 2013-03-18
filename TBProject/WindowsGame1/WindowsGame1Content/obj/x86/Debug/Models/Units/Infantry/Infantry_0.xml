@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Cube</Name>
     <Identity>
-      <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Units\Infantry\Infantry.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Units\Infantry\Infantry.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 1 1 0 1</Transform>

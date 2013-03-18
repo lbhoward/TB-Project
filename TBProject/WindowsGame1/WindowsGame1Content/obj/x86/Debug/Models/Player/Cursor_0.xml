@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Terrain_001</Name>
     <Identity>
-      <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -37,7 +37,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>None__grass_jpg</Name>
       <Identity>
-        <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -59,7 +59,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>None__Cursor_Texture_png</Name>
       <Identity>
-        <SourceFilename>C:\Users\Lawrence\workspace\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Dave\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

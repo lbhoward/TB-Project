@@ -1,11 +1,11 @@
-Content\Models\Player\Cursor.xnb
 Content\Models\Terrain\grass.xnb
 Content\Models\Player\Cursor_Texture.xnb
+Content\Models\Terrain\Terrain.xnb
+Content\Models\Player\Cursor.xnb
+Content\Models\Units\Infantry\Infantry.xnb
 Content\debug.xnb
 Content\Models\Terrain\grass_0.xnb
 Content\Models\Player\Cursor_Texture_0.xnb
-Content\Models\Terrain\Terrain.xnb
-Content\Models\Units\Infantry\Infantry.xnb
 Content\Models\Terrain\grass.jpg
 Content\Levels\Campaign\One\1.txt
 Content\Levels\Test.txt
