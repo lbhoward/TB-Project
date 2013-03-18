@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TBProject.Units
 {
-    enum Faction { R , G, B, Y };
+    enum Faction { R, G, B, Y };
 
     class Unit
     {

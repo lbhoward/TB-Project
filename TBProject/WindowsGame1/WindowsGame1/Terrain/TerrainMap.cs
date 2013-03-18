@@ -23,6 +23,13 @@ namespace TBProject.Terrain
             return terrainBlocks[i,j];
         }
         private TerrainBlock[,] terrainBlocks;
+
+        // Array for obstructions (water, trees, mountains etc)
+        public int[,] Obstructions
+        {
+            get { return obstructions; }
+        }
+        private int[,] obstructions;
         //The terrainMap holds a bulk array of all units occupying it,
         //therefore some elements will be NULL (corresponding to TerrainBlock).
         //This allows cursor to remain in sync.
@@ -44,6 +51,7 @@ namespace TBProject.Terrain
         //TerrainMap Constructor
         public TerrainMap(String levelLoadName, String unitLoadName, ContentManager nContent)
         {
+            
             BuildMap(levelLoadName, nContent);
             PopulateMap(unitLoadName, nContent);
             cursor = new Cursor(mapSize, nContent);
@@ -57,6 +65,7 @@ namespace TBProject.Terrain
             {
                 string line = reader.ReadLine();
                 mapSize = line.Length; // 
+                obstructions = new int[mapSize, mapSize];
 
                 terrainBlocks = new TerrainBlock[mapSize, mapSize]; //Instatiate array to the corresponding size
 
@@ -76,8 +85,17 @@ namespace TBProject.Terrain
                         //IMPORTANT: Model Loading Conventions: XNA does not accept the extension, only the asset name.
                         //                                      Do not include the 'Content\\'.
                         //                                      Do use \\ escape sequence.
+
+                        // Passable, normal block
                         case '0':
                             terrainBlocks[x, y] = new TerrainBlock(new Vector3(1*x,0,1*y), "Models\\Terrain\\Terrain", content);
+                            obstructions[x, y] = 0;
+                            break;
+                        
+                        // Impassable block
+                        case'1':
+                            terrainBlocks[x, y] = new TerrainBlock(new Vector3(1 * x, 0, 1 * y), "Models\\Terrain\\Terrain", content);
+                            obstructions[x, y] = 1;
                             break;
                     }
                 }
@@ -121,6 +139,42 @@ namespace TBProject.Terrain
         }
         #endregion
 
+        #region Help Functions
+        /// <summary>
+        /// Returns true if the desired block is passable
+        /// Passable = Free of enemy units and is not obstructed by terrain elements or off the edge of the map
+        /// PS thanks, Patrick!
+        /// </summary>
+        /// <param name="myUnit">Friendly unit selected, used to determine player allegiance</param>
+        /// <param name="position">Position on the map to check</param>
+        /// <returns></returns>
+        public bool ValidPosition(Point myUnitPosition, Point desiredPosition)
+        {
+            // If position contains an enemy unit, it is impassable.
+            if (units[desiredPosition.X, desiredPosition.Y].Allegiance != units[myUnitPosition.X, myUnitPosition.Y].Allegiance)
+                return false;
+
+            // Checks that we're looking within the confines of the map size.
+            if (desiredPosition.X < 0) return false;
+            if (desiredPosition.X >= mapSize) return false;
+            if (desiredPosition.Y < 0) return false;
+            if (desiredPosition.Y >= mapSize) return false;
+
+            return (obstructions[desiredPosition.X, desiredPosition.Y] == 0);
+        }
+
+        public bool ValidPosition(Point desiredPosition)
+        {
+            // Checks that we're looking within the confines of the map size.
+            if (desiredPosition.X < 0) return false;
+            if (desiredPosition.X >= mapSize) return false;
+            if (desiredPosition.Y < 0) return false;
+            if (desiredPosition.Y >= mapSize) return false;
+
+            return (obstructions[desiredPosition.X, desiredPosition.Y] == 0);
+        }
+        #endregion
+
         #region Update Code
         public void Update(GameTime gameTime)
         {
@@ -144,8 +198,8 @@ namespace TBProject.Terrain
                         DrawModel(units[mapWidth, mapHeight].Model3D, units[mapWidth,mapHeight].World, camera);
 
                     //Test to access Selected Unit
-                    if (units[(int)cursor.Position.X, (int)cursor.Position.Y] != null)
-                        Console.WriteLine("Unit Selected - Faction: {0} - HP: {1}", units[(int)cursor.Position.X, (int)cursor.Position.Y].Allegiance.ToString(), units[(int)cursor.Position.X, (int)cursor.Position.Y].HP);
+                    //if (units[(int)cursor.Position.X, (int)cursor.Position.Y] != null)
+                    //  Console.WriteLine("Unit Selected - Faction: {0} - HP: {1}", units[(int)cursor.Position.X, (int)cursor.Position.Y].Allegiance.ToString(), units[(int)cursor.Position.X, (int)cursor.Position.Y].HP);
                 }
             }
 
