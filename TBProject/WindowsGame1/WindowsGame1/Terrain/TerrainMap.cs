@@ -24,6 +24,12 @@ namespace TBProject.Terrain
         }
         private TerrainBlock[,] terrainBlocks;
 
+        // Nodes for pathfinding
+        public Node[,] Nodes
+        {
+            get { return nodes; }
+        }
+        private Node[,] nodes;
         //The terrainMap holds a bulk array of all units occupying it,
         //therefore some elements will be NULL (corresponding to TerrainBlock).
         //This allows cursor to remain in sync.
@@ -39,16 +45,31 @@ namespace TBProject.Terrain
         }
         private int mapSize = 0;
         private Cursor cursor;
+
+        private bool done;
+        private Point nextClosed;
+        private List<Point> finalPath;
+
+
+        private TimeSpan cursorMoveTime;
+        private TimeSpan previousCursorMoveTime;
         #endregion
 
         #region Initiliasation Code
         //TerrainMap Constructor
         public TerrainMap(String levelLoadName, String unitLoadName, ContentManager nContent)
         {
-            
             BuildMap(levelLoadName, nContent);
             PopulateMap(unitLoadName, nContent);
             cursor = new Cursor(mapSize, nContent);
+
+            nodes = new Node[mapSize,mapSize];
+            for (int nodesX = 0; nodesX < mapSize; ++nodesX)
+                for (int nodesY = 0; nodesY < mapSize; ++nodesY)
+                    nodes[nodesX, nodesY] = new Node(new Point(nodesX, nodesY));
+
+            cursorMoveTime = TimeSpan.FromMilliseconds(300f);
+            finalPath = new List<Point>();
         }
 
         //Read from TXT file and create TerrainBlock array
@@ -142,6 +163,9 @@ namespace TBProject.Terrain
         public bool ValidPosition(Point myUnitPosition, Point desiredPosition)
         {
             // If position contains an enemy unit, it is impassable.
+            if (units[desiredPosition.X, desiredPosition.Y] == null)
+                return false;
+
             if (units[desiredPosition.X, desiredPosition.Y].Allegiance != units[myUnitPosition.X, myUnitPosition.Y].Allegiance)
                 return false;
 
@@ -164,12 +188,114 @@ namespace TBProject.Terrain
 
             return (terrainBlocks[desiredPosition.X, desiredPosition.Y].Passable == true);
         }
+
+        public void BuildPath(Point startPoint, Point destination)
+        {
+            // Reset all nodes to default values before finding the path
+            for (int nodesX = 0; nodesX < mapSize; ++nodesX)
+            {
+                for (int nodesY = 0; nodesY < mapSize; ++nodesY)
+                {
+                    nodes[nodesX, nodesY].Reset();
+
+                    // Close nodes that are impassable
+                    if (!ValidPosition(startPoint, new Point(nodesX, nodesY)))
+                        nodes[nodesX, nodesY].SetClosed(true);
+                }
+            }
+
+            // Start point has lowest cost to begin with
+            nodes[startPoint.X, startPoint.Y].SetCost(0f);
+            Node currentLowestCostNode = nodes[startPoint.X, startPoint.Y];
+
+            // No need to build a path if we're already at the destination.
+            if (startPoint != destination)
+            {
+                // Whilst the destination is not in the closed list of nodes, find a path to it.
+                while (!nodes[destination.X, destination.Y].Closed)
+                {
+                    currentLowestCostNode.SetCost(100000f);
+                    currentLowestCostNode.SetLink(new Point(1, 1));
+
+                    // if this node has a lower cost than the current lowest cost AND it's *NOT* closed.
+                    for (int x = 0; x < mapSize; x++)
+                        for (int y = 0; y < mapSize; y++)
+                            if ((nodes[x, y].Cost + nodes[x, y].Heuristic(destination)) < currentLowestCostNode.Cost && !nodes[x, y].Closed)
+                                currentLowestCostNode = nodes[x, y];
+
+                    currentLowestCostNode.SetClosed(true);
+
+                    // now we've found the node with the lowest cost, do some magic!
+                    // Set the cost for all adjacent locations (+1 for straight. +1.4 for diagonal)
+                    // if its new cost is lower than its current cost AND it's a valid location to go to.
+                    for (int x = -1; x <= 1; x++)
+                    {
+                        for (int y = -1; y <= 1; y++)
+                        {
+                            Point newLoc = new Point(currentLowestCostNode.GridPosition.X + x, currentLowestCostNode.GridPosition.Y + y);
+
+                            if (ValidPosition(newLoc))
+                            {
+                                if (x != 0 ^ y != 0)
+                                {
+                                    float newCost = currentLowestCostNode.Cost + 1.0f;
+                                    if (newCost < nodes[newLoc.X, newLoc.Y].Cost && ValidPosition(newLoc))
+                                    {
+                                        nodes[newLoc.X, newLoc.Y].SetCost(newCost);
+                                        nodes[newLoc.X, newLoc.Y].SetLink(currentLowestCostNode.GridPosition);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } // End of While Loop
+
+                // Now create the finalPath
+                done = false;
+                finalPath.Clear();
+                nextClosed = destination;
+                while (!done)
+                {
+                    nodes[nextClosed.X, nextClosed.Y].SetInPath(true);
+                    finalPath.Add(nodes[nextClosed.X, nextClosed.Y].GridPosition);
+                    nextClosed = nodes[nextClosed.X, nextClosed.Y].Link;
+                    if (nextClosed == startPoint)
+                    {
+                        nodes[nextClosed.X, nextClosed.Y].SetInPath(true);
+                        finalPath.Add(nodes[nextClosed.X, nextClosed.Y].GridPosition);
+                        done = true;
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Update Code
         public void Update(GameTime gameTime)
         {
             cursor.Update(gameTime);
+            if (gameTime.TotalGameTime - previousCursorMoveTime > cursorMoveTime)
+            {
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A) || Keyboard.GetState().IsKeyDown(Keys.Enter))
+                {
+                    if (cursor.State == CursorState.FreeSelection)
+                    {
+                        if (units[(int)cursor.Position.X, (int)cursor.Position.Y] != null)
+                        {
+                            cursor.SetUnitSelected(new Point((int)cursor.Position.X, (int)cursor.Position.Y));
+                            previousCursorMoveTime = gameTime.TotalGameTime;
+                            cursor.SetState(CursorState.FriendlySelected);
+                        }
+                    }
+                    else if (cursor.State == CursorState.FriendlySelected)
+                    {
+                        BuildPath(cursor.UnitSelected, new Point((int)cursor.Position.X, (int)cursor.Position.Y));
+                        cursor.SetState(CursorState.FreeSelection);
+                        previousCursorMoveTime = gameTime.TotalGameTime;
+                    }
+                }
+            }
+
         }
         #endregion
 

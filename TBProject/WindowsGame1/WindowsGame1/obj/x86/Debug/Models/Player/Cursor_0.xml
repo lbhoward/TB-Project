@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:MeshContent">
+    <Name>Terrain_001</Name>
+    <Identity>
+      <SourceFilename>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+      <SourceTool>FbxImporter</SourceTool>
+    </Identity>
+    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+    <Positions>0 0 -1 0 0.3 -1 1 0.3 -1 1 0 -1 0 0 0 0 0.3 0 1 0.3 0 1 0 0</Positions>
+    <Geometry>
+      <Batch>
+        <Material>#Resource1</Material>
+        <Indices>2 1 0 0 3 2 6 5 4 4 7 6 5 9 8 8 2 5 12 11 10 10 13 12 3 4 5 5 2 3</Indices>
+        <Vertices>
+          <PositionIndices>1 0 4 5 6 7 3 2 0 3 0 1 2 3</PositionIndices>
+          <Channels>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492 0.5773492 0.5773492 -0.5773492 0.5773492 -0.5773492 -0.5773492</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">0.5 0.999913 0.749957 0.999913 0.749956 0.749957 0.5 0.749957 0.5 0.500001 0.749957 0.500001 0.749957 0.250043 0.5 0.250043 0.999913 0.749957 0.999913 0.500001 8.8E-05 0.74996 0.250044 0.749958 0.250043 0.500002 8.7E-05 0.500004</VertexChannel>
+          </Channels>
+        </Vertices>
+      </Batch>
+      <Batch>
+        <Material>#Resource2</Material>
+        <Indices>2 1 0 0 3 2</Indices>
+        <Vertices>
+          <PositionIndices>5 6 2 1</PositionIndices>
+          <Channels>
+            <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 0.5773492 -0.5773492 -0.5773492 0.5773492 -0.5773492</VertexChannel>
+            <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">0.5 0.749957 0.5 0.500001 0.250043 0.500002 0.250044 0.749958</VertexChannel>
+          </Channels>
+        </Vertices>
+      </Batch>
+    </Geometry>
+  </Asset>
+  <Resources>
+    <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
+      <Name>None__grass_jpg</Name>
+      <Identity>
+        <SourceFilename>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.8 0.8 0.8</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.160000011 0.160000011 0.160000011</Data>
+        <Data Key="SpecularPower" Type="float">80</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External1</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+    <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
+      <Name>None__Cursor_Texture_png</Name>
+      <Identity>
+        <SourceFilename>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\Models\Player\Cursor.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.8 0.8 0.8</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.160000011 0.160000011 0.160000011</Data>
+        <Data Key="SpecularPower" Type="float">80</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External1</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+  </Resources>
+  <ExternalReferences>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\..\..\WindowsGame1Content\Models\Player\Cursor_Texture.png</ExternalReference>
+  </ExternalReferences>
+</XnaContent>

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Framework="Microsoft.Xna.Framework" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Models\Terrain\grass.jpg</Source>
+      <Name>Models\Terrain\grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass.xnb</Output>
+      <Time>2013-03-19T15:34:31.1390782+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor_Texture.png</Source>
+      <Name>Models\Player\Cursor_Texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor_Texture.xnb</Output>
+      <Time>2013-03-19T15:34:31.1380781+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Terrain\Terrain.fbx</Source>
+      <Name>Models\Terrain\Terrain</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\Terrain.xnb</Output>
+      <Time>2013-03-19T15:34:31.1380781+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Models\Terrain\Terrain_0.xml</Key>
+        <Value>2013-03-19T15:53:46.3271511+00:00</Value>
+      </Dependency>
+      <Request>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor.fbx</Source>
+      <Name>Models\Player\Cursor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor.xnb</Output>
+      <Time>2013-03-19T15:34:31.137078+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Models\Player\Cursor_0.xml</Key>
+        <Value>2013-03-19T15:53:48.4182707+00:00</Value>
+      </Dependency>
+      <Request>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor_Texture_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Units\Infantry\Infantry.fbx</Source>
+      <Name>Models\Units\Infantry\Infantry</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Units\Infantry\Infantry.xnb</Output>
+      <Time>2013-03-19T15:34:31.1400782+00:00</Time>
+      <Dependency>
+        <Key>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Models\Units\Infantry\Infantry_0.xml</Key>
+        <Value>2013-03-19T15:53:48.4492725+00:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>debug.spritefont</Source>
+      <Name>debug</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\debug.xnb</Output>
+      <Time>2013-03-19T15:34:31.1410783+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Terrain\Terrain.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Models\Terrain\Terrain_0.xml</Output>
+      <Time>2013-03-19T15:34:31.1380781+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Terrain\grass.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Terrain\grass_0.xnb</Output>
+      <Time>2013-03-19T15:34:31.1390782+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Models\Player\Cursor_0.xml</Output>
+      <Time>2013-03-19T15:34:31.137078+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Player\Cursor_Texture.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\Player\Cursor_Texture_0.xnb</Output>
+      <Time>2013-03-19T15:34:31.1380781+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Units\Infantry\Infantry.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\Models\Units\Infantry\Infantry_0.xml</Output>
+      <Time>2013-03-19T15:34:31.1400782+00:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{B2C5A54B-3096-4262-B0A5-B23588D4FF00}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\computing\Documents\GitHub\TB-Project\TBProject\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-09-21T17:29:41.2679475+01:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

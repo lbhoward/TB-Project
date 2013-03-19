@@ -8,6 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace TBProject
 {
+    enum CursorState
+    {
+        FreeSelection, FriendlySelected, 
+    }
+
     class Cursor
     {
         #region Declarations
@@ -36,10 +41,15 @@ namespace TBProject
         }
         private Matrix world;
 
+        public CursorState State { get { return state; } } public void SetState(CursorState newState) { state = newState; }
+        private CursorState state;
+
         // Delay timer for cursor movement
         private int mapSize;
         private TimeSpan cursorMoveTime;
         private TimeSpan previousCursorMoveTime;
+        private Point unitSelected;
+        public Point UnitSelected { get { return unitSelected; } } public void SetUnitSelected(Point selection) { unitSelected = selection; }
         #endregion
 
         #region Initilisation Code
@@ -51,6 +61,7 @@ namespace TBProject
             world = Matrix.Identity;
             world.Translation = new Vector3(0, 0, 0);
             cursorMoveTime = TimeSpan.FromMilliseconds(300f);
+            state = CursorState.FreeSelection;
         }
         #endregion
 
@@ -60,33 +71,35 @@ namespace TBProject
             bool detectChange = false; //DEBUG: Test for change in X or Y to reduce Console.WriteLine
             if (gameTime.TotalGameTime - previousCursorMoveTime > cursorMoveTime)
             {
-                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp) || Keyboard.GetState().IsKeyDown(Keys.W))
                 {
                     --position.Y;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
 
-                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight))
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight) || Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     ++position.X;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
 
-                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown) || Keyboard.GetState().IsKeyDown(Keys.S))
                 {
                     ++position.Y;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
 
-                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft) || Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     --position.X;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
+
+                
             }
             position.X = MathHelper.Clamp(position.X, 0, mapSize-1);
             position.Y = MathHelper.Clamp(position.Y, 0, mapSize-1);
