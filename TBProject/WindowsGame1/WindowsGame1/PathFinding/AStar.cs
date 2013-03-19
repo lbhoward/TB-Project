@@ -16,13 +16,6 @@ namespace TBProject.PathFinding
         }
         private Node[,] nodes;
 
-        // The current map to perform path finding on
-        public Terrain.TerrainMap Map
-        {
-            get { return map; }
-        }
-        private Terrain.TerrainMap map;
-
         // The completed path for the unit
         public List<Point> FinalPath
         {
@@ -38,9 +31,8 @@ namespace TBProject.PathFinding
         /// Constructor
         /// </summary>
         /// <param name="nMap">Pass the current map</param>
-        public AStar(Terrain.TerrainMap nMap)
+        public AStar(Terrain.TerrainMap map)
         {
-            map = nMap;
             nodes = new Node[map.MapSize, map.MapSize];
 
             for (int nodesX = 0; nodesX < map.MapSize; ++nodesX)
@@ -55,7 +47,7 @@ namespace TBProject.PathFinding
         /// </summary>
         /// <param name="startPoint">Points use ints only so no need to convert from float with Vector2s</param>
         /// <param name="destination"></param>
-        public void Build(Point startPoint, Point destination)
+        public void Build(Point startPoint, Point destination, Terrain.TerrainMap map)
         {
             // Reset all nodes to default values before finding the path
             for (int nodesX = 0; nodesX < map.MapSize; ++nodesX)
@@ -84,10 +76,10 @@ namespace TBProject.PathFinding
                     currentLowestCostNode.SetLink(new Point(1, 1));
 
                     // if this node has a lower cost than the current lowest cost AND it's *NOT* closed.
-                    for (int i = 0; i < map.MapSize; i++)
-                        for (int j = 0; j < map.MapSize; j++)
-                            if ((nodes[i, j].Cost + nodes[i, j].Heuristic(destination)) < currentLowestCostNode.Cost && !nodes[i, j].Closed)
-                                currentLowestCostNode = nodes[i, j];
+                    for (int x = 0; x < map.MapSize; x++)
+                        for (int y = 0; y < map.MapSize; y++)
+                            if ((nodes[x, y].Cost + nodes[x, y].Heuristic(destination)) < currentLowestCostNode.Cost && !nodes[x, y].Closed)
+                                currentLowestCostNode = nodes[x, y];
 
                     currentLowestCostNode.SetClosed(true);
 
@@ -99,34 +91,18 @@ namespace TBProject.PathFinding
                         for (int y = -1; y <= 1; y++)
                         {
                             Point newLoc = new Point(currentLowestCostNode.GridPosition.X + x, currentLowestCostNode.GridPosition.Y + y);
-                            // Make sure we're looking within the bounds of the room
-                            // THIS CAN BE IMPROVED WITH YOUR FANCY NAND LOGIC THINGY YOU WERE TALKING ABOUT THAT ONE TIME...
-                            if ((newLoc.X >= 0 && newLoc.X < map.MapSize) && (newLoc.Y >= 0 && newLoc.Y < map.MapSize))
+
+                            if (map.ValidPosition(newLoc))
                             {
-                                // Adjacent
-                                if ((x != 0 && y == 0) || (x == 0 && y != 0))
+                                if (x != 0 ^ y != 0)
                                 {
                                     float newCost = currentLowestCostNode.Cost + 1.0f;
-                                    if ((newCost < nodes[newLoc.X, newLoc.Y].Cost)
-                                           && map.ValidPosition(newLoc))
+                                    if (newCost < nodes[newLoc.X, newLoc.Y].Cost)
                                     {
                                         nodes[newLoc.X, newLoc.Y].SetCost(newCost);
                                         nodes[newLoc.X, newLoc.Y].SetLink(currentLowestCostNode.GridPosition);
                                     }
                                 }
-                                else
-                                    // Diagonal
-                                    if (x != 0 && y != 0)
-                                    {
-                                        float newCost = currentLowestCostNode.Cost + 1.4f;
-                                        if ((newCost < nodes[newLoc.X, newLoc.Y].Cost)
-                                               && map.ValidPosition(newLoc))
-                                        {
-                                            nodes[newLoc.X, newLoc.Y].SetCost(newCost);
-                                            nodes[newLoc.X, newLoc.Y].SetLink(currentLowestCostNode.GridPosition);
-                                        }
-                                    }
-
                             }
                         }
                     }

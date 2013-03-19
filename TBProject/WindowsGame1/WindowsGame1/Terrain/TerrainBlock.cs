@@ -11,6 +11,11 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TBProject.Terrain
 {
+    enum BlockType
+    {
+        None, Water, Mountain, Crater
+    }
+
     class TerrainBlock
     {
         //Players Global Position in 3D space
@@ -43,8 +48,25 @@ namespace TBProject.Terrain
         private bool selected;
         public void SetSelected(bool state) { selected = state; }
 
+        // Returns true if block is not obstructed by terrain elements
+        // Use this instead of if (water || mountains || hills) etc when determining if it is passable
+        public bool Passable
+        {
+            get { return passable; }
+        }
+        private bool passable;
+
+        // The type of terrain
+        public BlockType BlockType
+        {
+            get { return blockType; }
+        }
+        private BlockType blockType;
+        // Might want to change terrain in future, for example add craters from explosions
+        public void SetBlockType(BlockType type, bool nPassable) { blockType = type; passable = nPassable; } 
+
         //Constructor
-        public TerrainBlock(Vector3 setPos, String modelPath, ContentManager content)
+        public TerrainBlock(Vector3 setPos, String modelPath, ContentManager content, int type)
         {
             //Assign starting position
             position = setPos;
@@ -55,6 +77,14 @@ namespace TBProject.Terrain
 
             //Load model
             model = content.Load<Model>(modelPath);
+
+            switch (type)
+            {
+                case 0:
+                    blockType = Terrain.BlockType.None;
+                    passable = true;
+                    break;
+            }
         }
     }
 }

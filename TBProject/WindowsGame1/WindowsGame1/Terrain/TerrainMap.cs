@@ -24,12 +24,6 @@ namespace TBProject.Terrain
         }
         private TerrainBlock[,] terrainBlocks;
 
-        // Array for obstructions (water, trees, mountains etc)
-        public int[,] Obstructions
-        {
-            get { return obstructions; }
-        }
-        private int[,] obstructions;
         //The terrainMap holds a bulk array of all units occupying it,
         //therefore some elements will be NULL (corresponding to TerrainBlock).
         //This allows cursor to remain in sync.
@@ -65,7 +59,6 @@ namespace TBProject.Terrain
             {
                 string line = reader.ReadLine();
                 mapSize = line.Length; // 
-                obstructions = new int[mapSize, mapSize];
 
                 terrainBlocks = new TerrainBlock[mapSize, mapSize]; //Instatiate array to the corresponding size
 
@@ -88,14 +81,12 @@ namespace TBProject.Terrain
 
                         // Passable, normal block
                         case '0':
-                            terrainBlocks[x, y] = new TerrainBlock(new Vector3(1*x,0,1*y), "Models\\Terrain\\Terrain", content);
-                            obstructions[x, y] = 0;
+                            terrainBlocks[x, y] = new TerrainBlock(new Vector3(1*x,0,1*y), "Models\\Terrain\\Terrain", content, 0);
                             break;
                         
                         // Impassable block
                         case'1':
-                            terrainBlocks[x, y] = new TerrainBlock(new Vector3(1 * x, 0, 1 * y), "Models\\Terrain\\Terrain", content);
-                            obstructions[x, y] = 1;
+                            terrainBlocks[x, y] = new TerrainBlock(new Vector3(1 * x, 0, 1 * y), "Models\\Terrain\\Terrain", content, 1);
                             break;
                     }
                 }
@@ -160,7 +151,7 @@ namespace TBProject.Terrain
             if (desiredPosition.Y < 0) return false;
             if (desiredPosition.Y >= mapSize) return false;
 
-            return (obstructions[desiredPosition.X, desiredPosition.Y] == 0);
+            return (terrainBlocks[desiredPosition.X, desiredPosition.Y].Passable == true);
         }
 
         public bool ValidPosition(Point desiredPosition)
@@ -171,7 +162,7 @@ namespace TBProject.Terrain
             if (desiredPosition.Y < 0) return false;
             if (desiredPosition.Y >= mapSize) return false;
 
-            return (obstructions[desiredPosition.X, desiredPosition.Y] == 0);
+            return (terrainBlocks[desiredPosition.X, desiredPosition.Y].Passable == true);
         }
         #endregion
 
