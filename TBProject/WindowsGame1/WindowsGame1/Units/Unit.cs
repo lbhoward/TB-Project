@@ -16,6 +16,12 @@ namespace TBProject.Units
     class Unit
     {
         #region Declarations
+        public Point Position 
+        { 
+            get { return position; } 
+        }
+        private Point position;
+
         //The number of blocks this unit may move per turn
         public int MoveLimit
         {

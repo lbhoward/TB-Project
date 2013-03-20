@@ -49,8 +49,6 @@ namespace TBProject.Terrain
         private bool done;
         private Point nextClosed;
         private List<Point> finalPath;
-
-
         private TimeSpan cursorMoveTime;
         private TimeSpan previousCursorMoveTime;
         #endregion
@@ -61,7 +59,7 @@ namespace TBProject.Terrain
         {
             BuildMap(levelLoadName, nContent);
             PopulateMap(unitLoadName, nContent);
-            cursor = new Cursor(mapSize, nContent);
+            cursor = new Cursor(nContent, this);
 
             nodes = new Node[mapSize,mapSize];
             for (int nodesX = 0; nodesX < mapSize; ++nodesX)
@@ -294,28 +292,31 @@ namespace TBProject.Terrain
         public void Update(GameTime gameTime)
         {
             cursor.Update(gameTime);
+            
             if (gameTime.TotalGameTime - previousCursorMoveTime > cursorMoveTime)
             {
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A) || Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
                     if (cursor.State == CursorState.FreeSelection)
                     {
-                        if (units[(int)cursor.Position.X, (int)cursor.Position.Y] != null)
+                        if (units[(int)cursor.GridPosition.X, (int)cursor.GridPosition.Y] != null)
                         {
-                            cursor.SetUnitSelected(new Point((int)cursor.Position.X, (int)cursor.Position.Y));
+                            cursor.SetUnitSelected(units[(int)cursor.GridPosition.X, (int)cursor.GridPosition.Y]);
                             previousCursorMoveTime = gameTime.TotalGameTime;
+                            
                             cursor.SetState(CursorState.FriendlySelected);
+                            Console.WriteLine(cursor.State);
                         }
                     }
                     else if (cursor.State == CursorState.FriendlySelected)
                     {
-                        BuildPath(cursor.UnitSelected, new Point((int)cursor.Position.X, (int)cursor.Position.Y));
+                        BuildPath(cursor.UnitSelected.Position, new Point((int)cursor.GridPosition.X, (int)cursor.GridPosition.Y));
                         cursor.SetState(CursorState.FreeSelection);
                         previousCursorMoveTime = gameTime.TotalGameTime;
+                        Console.WriteLine(cursor.State);
                     }
                 }
             }
-
         }
         #endregion
 

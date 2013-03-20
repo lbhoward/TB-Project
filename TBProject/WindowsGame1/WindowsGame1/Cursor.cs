@@ -41,27 +41,37 @@ namespace TBProject
         }
         private Matrix world;
 
+        public Units.Unit UnitSelected
+        {
+            get { return unitSelected; }
+        }
+        private Units.Unit unitSelected;
+        public void SetUnitSelected(Units.Unit selection) { unitSelected = selection; }
+
         public CursorState State { get { return state; } } public void SetState(CursorState newState) { state = newState; }
         private CursorState state;
 
+        public Terrain.TerrainMap Map 
+        { 
+            get { return map; } 
+        }
+        private Terrain.TerrainMap map;
+
         // Delay timer for cursor movement
-        private int mapSize;
         private TimeSpan cursorMoveTime;
         private TimeSpan previousCursorMoveTime;
-        private Point unitSelected;
-        public Point UnitSelected { get { return unitSelected; } } public void SetUnitSelected(Point selection) { unitSelected = selection; }
         #endregion
 
         #region Initilisation Code
         // Constructor
-        public Cursor(int setMapSize, ContentManager nContent)
+        public Cursor(ContentManager content, Terrain.TerrainMap nMap)
         {
-            mapSize = setMapSize;
-            model = nContent.Load<Model>("Models\\Player\\Cursor");
+            model = content.Load<Model>("Models\\Player\\Cursor");
             world = Matrix.Identity;
             world.Translation = new Vector3(0, 0, 0);
             cursorMoveTime = TimeSpan.FromMilliseconds(100f);
             state = CursorState.FreeSelection;
+            map = nMap;
         }
         #endregion
 
@@ -73,42 +83,44 @@ namespace TBProject
             {
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp) || Keyboard.GetState().IsKeyDown(Keys.W))
                 {
-                    --position.Y;
+                    --gridPosition.Y;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
 
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight) || Keyboard.GetState().IsKeyDown(Keys.D))
                 {
-                    ++position.X;
+                    ++gridPosition.X;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
 
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown) || Keyboard.GetState().IsKeyDown(Keys.S))
                 {
-                    ++position.Y;
+                    ++gridPosition.Y;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
 
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft) || Keyboard.GetState().IsKeyDown(Keys.A))
                 {
-                    --position.X;
+                    --gridPosition.X;
                     previousCursorMoveTime = gameTime.TotalGameTime;
                     detectChange = true;
                 }
-
-                
             }
-            position.X = MathHelper.Clamp(position.X, 0, mapSize-1);
-            position.Y = MathHelper.Clamp(position.Y, 0, mapSize-1);
+
+            gridPosition.X = MathHelper.Clamp(gridPosition.X, 0, map.MapSize - 1);
+            gridPosition.Y = MathHelper.Clamp(gridPosition.Y, 0, map.MapSize - 1);
 
             if (detectChange)
             {
+                if (state == CursorState.FriendlySelected)
+                    map.BuildPath(unitSelected.Position, new Point((int)gridPosition.X, (int)gridPosition.Y)); 
+
                 world = Matrix.Identity;
-                world.Translation = new Vector3(1 * position.X, 0, 1 * position.Y);
-                Console.WriteLine("X: {0} - Y: {1}", position.X, position.Y); //Y: 2D <> Z: 3D
+                world.Translation = new Vector3(1 * gridPosition.X, 0, 1 * gridPosition.Y);
+                Console.WriteLine("X: {0} - Y: {1}", gridPosition.X, gridPosition.Y); //Y: 2D <> Z: 3D
             }
         }
         #endregion
