@@ -47,8 +47,12 @@ namespace TBProject
         #endregion
 
         // Node constructor
-        public Node(Point nGridPosition)
+        public Node(bool nClosed, float nCost, Point nLink, bool nInPath, Point nGridPosition)
         {
+            closed = nClosed;
+            cost = nCost;
+            link = nLink;
+            inPath = nInPath;
             gridPosition = nGridPosition;
         }
 

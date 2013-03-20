@@ -66,7 +66,7 @@ namespace TBProject.Terrain
             nodes = new Node[mapSize,mapSize];
             for (int nodesX = 0; nodesX < mapSize; ++nodesX)
                 for (int nodesY = 0; nodesY < mapSize; ++nodesY)
-                    nodes[nodesX, nodesY] = new Node(new Point(nodesX, nodesY));
+                    nodes[nodesX, nodesY] = new Node(false, 10000f, new Point(-1, -1), false, new Point(nodesX, nodesY));
 
             cursorMoveTime = TimeSpan.FromMilliseconds(300f);
             finalPath = new List<Point>();
@@ -191,37 +191,40 @@ namespace TBProject.Terrain
 
         public void BuildPath(Point startPoint, Point destination)
         {
-            // Reset all nodes to default values before finding the path
-            for (int nodesX = 0; nodesX < mapSize; ++nodesX)
+            // Reset all the data for the next path finding
+            for (int i = 0; i < mapSize; i++)
             {
-                for (int nodesY = 0; nodesY < mapSize; ++nodesY)
+                for (int j = 0; j < mapSize; j++)
                 {
-                    nodes[nodesX, nodesY].Reset();
+                    nodes[i, j].Reset();
 
-                    // Close nodes that are impassable
-                    if (!ValidPosition(startPoint, new Point(nodesX, nodesY)))
-                        nodes[nodesX, nodesY].SetClosed(true);
+                    // If the player cannot access a square, mark it closed. There's no need to incorporate it into the path finding
+                    if (!ValidPosition(new Point(i, j)))
+                        nodes[i, j].SetClosed(true);
                 }
             }
 
-            // Start point has lowest cost to begin with
-            nodes[startPoint.X, startPoint.Y].SetCost(0f);
-            Node currentLowestCostNode = nodes[startPoint.X, startPoint.Y];
-
-            // No need to build a path if we're already at the destination.
+            nodes[startPoint.X, startPoint.Y].SetCost(0.0f); // The start point has the lowest cost to begin with.
+            Node currentLowestCostNode = nodes[startPoint.X, startPoint.Y]; // set the current node as the bot position
+            // While the destination is not in the closed list
             if (startPoint != destination)
             {
-                // Whilst the destination is not in the closed list of nodes, find a path to it.
                 while (!nodes[destination.X, destination.Y].Closed)
                 {
-                    currentLowestCostNode.SetCost(100000f);
-                    currentLowestCostNode.SetLink(new Point(1, 1));
+                    // set the currentNode to a new node not on the grid with a high cost so we can find the lowest cost that does exist.
+                    currentLowestCostNode = new Node(false, 100000f, new Point(1, 1), false, new Point(0, 0));
 
-                    // if this node has a lower cost than the current lowest cost AND it's *NOT* closed.
-                    for (int x = 0; x < mapSize; x++)
-                        for (int y = 0; y < mapSize; y++)
-                            if ((nodes[x, y].Cost + nodes[x, y].Heuristic(destination)) < currentLowestCostNode.Cost && !nodes[x, y].Closed)
-                                currentLowestCostNode = nodes[x, y];
+                    for (int i = 0; i < mapSize; i++)
+                    {
+                        for (int j = 0; j < mapSize; j++)
+                        {
+                            // if this node has a lower cost than the current lowest cost node AND it's *NOT* closed.
+                            if ((nodes[i, j].Cost + nodes[i, j].Heuristic(destination)) < currentLowestCostNode.Cost && !nodes[i, j].Closed)
+                            {
+                                currentLowestCostNode = nodes[i, j]; // This will always be the start point on the first pass.
+                            }
+                        }
+                    }
 
                     currentLowestCostNode.SetClosed(true);
 
@@ -234,23 +237,39 @@ namespace TBProject.Terrain
                         {
                             Point newLoc = new Point(currentLowestCostNode.GridPosition.X + x, currentLowestCostNode.GridPosition.Y + y);
 
-                            if (ValidPosition(newLoc))
+                            // Make sure we're looking within the bounds of the room
+                            if ((newLoc.X >= 0 && newLoc.X < mapSize) && (newLoc.Y >= 0 && newLoc.Y < mapSize))
                             {
-                                if (x != 0 ^ y != 0)
+                                // Adjacent
+                                if ((x != 0 && y == 0) || (x == 0 && y != 0))
                                 {
                                     float newCost = currentLowestCostNode.Cost + 1.0f;
-                                    if (newCost < nodes[newLoc.X, newLoc.Y].Cost && ValidPosition(newLoc))
+                                    if ((newCost < nodes[newLoc.X, newLoc.Y].Cost)
+                                           && ValidPosition(newLoc))
                                     {
                                         nodes[newLoc.X, newLoc.Y].SetCost(newCost);
                                         nodes[newLoc.X, newLoc.Y].SetLink(currentLowestCostNode.GridPosition);
                                     }
                                 }
+                                else
+                                    // Diagonal
+                                    if (x != 0 && y != 0)
+                                    {
+                                        float newCost = currentLowestCostNode.Cost + 1.4f;
+                                        if ((newCost < nodes[newLoc.X, newLoc.Y].Cost)
+                                               && ValidPosition(newLoc))
+                                        {
+                                            nodes[newLoc.X, newLoc.Y].SetCost(newCost);
+                                            nodes[newLoc.X, newLoc.Y].SetLink(currentLowestCostNode.GridPosition);
+                                        }
+                                    }
                             }
                         }
-                    }
-                } // End of While Loop
 
-                // Now create the finalPath
+                    }
+                }// end while loop
+
+                // Create the final path
                 done = false;
                 finalPath.Clear();
                 nextClosed = destination;
@@ -267,7 +286,7 @@ namespace TBProject.Terrain
                     }
                 }
             }
-        }
+        }        
         #endregion
 
         #region Update Code
