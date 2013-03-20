@@ -1,4 +1,8 @@
-                           . ...
+README!
+
+Click RAW to view... we'll probably add something a little less sexist in here at a later date
+
+
                          .''.' .    '.
                     . '' ".'.:I:.'..  '.
                   .'.:.:..,,:II:'.'.'.. '.
