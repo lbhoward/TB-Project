@@ -241,7 +241,7 @@ namespace TBProject.Terrain
                             if ((newLoc.X >= 0 && newLoc.X < mapSize) && (newLoc.Y >= 0 && newLoc.Y < mapSize))
                             {
                                 // Adjacent
-                                if ((x != 0 && y == 0) || (x == 0 && y != 0))
+                                if (x != 0 ^ y != 0)
                                 {
                                     float newCost = currentLowestCostNode.Cost + 1.0f;
                                     if ((newCost < nodes[newLoc.X, newLoc.Y].Cost)
@@ -278,6 +278,7 @@ namespace TBProject.Terrain
                     nodes[nextClosed.X, nextClosed.Y].SetInPath(true);
                     finalPath.Add(nodes[nextClosed.X, nextClosed.Y].GridPosition);
                     nextClosed = nodes[nextClosed.X, nextClosed.Y].Link;
+                    Console.WriteLine("Path X: " + nextClosed.X + " Y: " + nextClosed.Y);
                     if (nextClosed == startPoint)
                     {
                         nodes[nextClosed.X, nextClosed.Y].SetInPath(true);
@@ -328,14 +329,15 @@ namespace TBProject.Terrain
             {
                 for (int mapWidth = 0; mapWidth < MapSize; ++mapWidth)
                 {
-                    DrawModel(terrainBlocks[mapWidth, mapHeight].Model3D, terrainBlocks[mapWidth, mapHeight].World, camera);
+                    if (nodes[mapWidth, mapHeight].InPath)
+                        DrawModel(terrainBlocks[mapWidth, mapHeight].Model3D, terrainBlocks[mapWidth, mapHeight].World, camera, Color.Red);
+                    else
+                        DrawModel(terrainBlocks[mapWidth, mapHeight].Model3D, terrainBlocks[mapWidth, mapHeight].World, camera, Color.White);
+
+                    
 
                     if (units[mapWidth, mapHeight] != null)
-                        DrawModel(units[mapWidth, mapHeight].Model3D, units[mapWidth,mapHeight].World, camera);
-
-                    //Test to access Selected Unit
-                    //if (units[(int)cursor.Position.X, (int)cursor.Position.Y] != null)
-                    //  Console.WriteLine("Unit Selected - Faction: {0} - HP: {1}", units[(int)cursor.Position.X, (int)cursor.Position.Y].Allegiance.ToString(), units[(int)cursor.Position.X, (int)cursor.Position.Y].HP);
+                        DrawModel(units[mapWidth, mapHeight].Model3D, units[mapWidth,mapHeight].World, camera, Color.White);  
                 }
             }
 
@@ -344,7 +346,7 @@ namespace TBProject.Terrain
         }
         //3D Model Draw Function
         //DrawModel(Model, MatrixBelongingToModel)
-        private void DrawModel(Model model, Matrix world, Camera camera)
+        private void DrawModel(Model model, Matrix world, Camera camera, Color color)
         {
             Matrix[] transforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(transforms);
@@ -357,6 +359,7 @@ namespace TBProject.Terrain
                     effect.World = transforms[mesh.ParentBone.Index] * world;
                     effect.View = camera.View;
                     effect.Projection = camera.Projection;
+                    effect.DiffuseColor = color.ToVector3();
                 }
                 mesh.Draw();
             }

@@ -60,7 +60,7 @@ namespace TBProject
             model = nContent.Load<Model>("Models\\Player\\Cursor");
             world = Matrix.Identity;
             world.Translation = new Vector3(0, 0, 0);
-            cursorMoveTime = TimeSpan.FromMilliseconds(300f);
+            cursorMoveTime = TimeSpan.FromMilliseconds(100f);
             state = CursorState.FreeSelection;
         }
         #endregion
